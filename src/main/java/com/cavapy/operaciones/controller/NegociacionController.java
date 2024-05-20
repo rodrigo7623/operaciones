@@ -1,3 +1,5 @@
+package com.cavapy.operaciones.controller;
+
 import com.cavapy.operaciones.entity.Negociacion;
 import com.cavapy.operaciones.util.OperacionesResponse;
 import org.springframework.http.HttpStatus;

@@ -1,7 +1,7 @@
 package com.cavapy.operaciones.controller;
 
 import com.cavapy.operaciones.entity.TituloValor;
-import com.cavapy.operaciones.util.ResponseApi;
+import com.cavapy.operaciones.util.OperacionesResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -15,18 +15,19 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value = "/v1")
+@RequestMapping(value = "/v1/titulo-valor")
 @Tag(name = "Operaciones de Titulo Valor", description = "Operaciones relacionadas con Titulo Valor")
-public class MainController {
+public class TituloValorController {
 
-    @PostMapping(value = "/agregar", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/agregar", produces = MediaType.APPLICATION_JSON_VALUE,
+    consumes = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "Agregar Titulo Valor", description = "Registrar un nuevo titulo valor.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Titulo valor registrado correctamente",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseApi.class)))
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = OperacionesResponse.class)))
     })
     public ResponseEntity<?> altaTituloValor(@RequestBody TituloValor tituloValor) {
-        return new ResponseEntity<>(new ResponseApi("Titulo valor registrado correctamente."), HttpStatus.OK);
+        return new ResponseEntity<>(new OperacionesResponse("Titulo valor registrado correctamente."), HttpStatus.OK);
     }
 
     @GetMapping(value = "/consultar", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -43,20 +44,20 @@ public class MainController {
     @Operation(summary = "Modificar Titulo Valor", description = "Modificar un titulo valor existente.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Titulo valor modificado correctamente",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseApi.class)))
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = OperacionesResponse.class)))
     })
     public ResponseEntity<?> modificarTituloValor() {
-        return new ResponseEntity<>(new ResponseApi("Titulo valor modificado correctamente."), HttpStatus.OK);
+        return new ResponseEntity<>(new OperacionesResponse("Titulo valor modificado correctamente."), HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/eliminar", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "Eliminar Titulo Valor", description = "Eliminar un titulo valor existente.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Titulo valor eliminado",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseApi.class)))
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = OperacionesResponse.class)))
     })
     public ResponseEntity<?> eliminarTituloValor() {
-        return new ResponseEntity<>(new ResponseApi("Titulo valor eliminado."), HttpStatus.OK);
+        return new ResponseEntity<>(new OperacionesResponse("Titulo valor eliminado."), HttpStatus.OK);
     }
 
 }

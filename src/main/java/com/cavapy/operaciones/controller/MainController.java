@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value = "/operaciones")
+@RequestMapping(value = "/v1")
 @Tag(name = "Operaciones de Titulo Valor", description = "Operaciones relacionadas con Titulo Valor")
 public class MainController {
 
